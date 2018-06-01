@@ -1,0 +1,47 @@
+PREFERRED_VERSION_linux-karo = "4.9.11"
+PREFERRED_VERSION_imx-gpu-viv = "6.2.2.p0-aarch32"
+
+MACHINE = 'tx6u-8033'
+#MACHINE ?= 'tx6q-1030'
+DISTRO ?= 'poky'
+DISTRO_FEATURES_remove = "wayland systemd x11"
+DISTRO_FEATURES_append = "opengl"
+PACKAGE_CLASSES ?= "package_ipk"
+EXTRA_IMAGE_FEATURES ?= "debug-tweaks splash package-management hwcodecs"
+IMAGE_FSTYPES = "tar.gz"
+USER_CLASSES ?= "buildstats image-mklibs"
+PATCHRESOLVE = "noop"
+BB_DISKMON_DIRS = "\
+    STOPTASKS,${TMPDIR},1G,100K \
+    STOPTASKS,${DL_DIR},1G,100K \
+    STOPTASKS,${SSTATE_DIR},1G,100K \
+    STOPTASKS,/tmp,100M,100K \
+    ABORT,${TMPDIR},100M,1K \
+    ABORT,${DL_DIR},100M,1K \
+    ABORT,${SSTATE_DIR},100M,1K \
+    ABORT,/tmp,10M,1K"
+PACKAGECONFIG_append_pn-qemu-native = " sdl"
+PACKAGECONFIG_append_pn-nativesdk-qemu = " sdl"
+PACKAGECONFIG_append_pn-qtdeclarative = " qtxmlpatterns"
+PACKAGECONFIG_append_pn-qtbase = "accessibility qml-debug"
+CONF_VERSION = "1"
+
+ACCEPT_FSL_EULA = "1"
+
+INHERIT += "archiver"
+ARCHIVER_MODE[src] = "original"
+ARCHIVER_MODE[diff] = "1"
+ARCHIVER_MODE[recipe] = "1"
+COPY_LIC_MANIFEST = "1"
+COPY_LIC_DIRS = "1"
+COPYLEFT_LICENSE_EXCLUDE = "None Closed Proprietory CLOSED"
+COPYLEFT_RECIPE_TYPE = "target"
+LICENSE_CREATE_PACKAGE = "1"
+
+BB_DANGLINGAPPENDS_WARNONLY = "1"
+
+SPLASH = "psplash-mucross"
+PREFERRED_PROVIDER_virtual/psplash = "psplash-mucross"
+PNBLACKLIST[fbida] = ""
+
+INHERIT += "rm_work"
