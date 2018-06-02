@@ -11,6 +11,8 @@ BBLAYERS = " \
   ${BSPDIR}/yocto/meta-openembedded/meta-oe \
   ${BSPDIR}/yocto/meta-openembedded/meta-multimedia \
   ${BSPDIR}/yocto/meta-openembedded/meta-filesystems \
+  ${BSPDIR}/yocto/meta-openembedded/meta-python \
+  ${BSPDIR}/yocto/meta-openembedded/meta-networking \
   \
   ${BSPDIR}/yocto/meta-nodejs \
   ${BSPDIR}/yocto/meta-clang \
@@ -19,5 +21,5 @@ BBLAYERS = " \
   \
   ${BSPDIR}/yocto/meta-kc-bsp \
   ${BSPDIR}/yocto/meta-freescale \
-  ${BSPDIR}/yocto/meta-kc-karo \
+  ${BSPDIR}/yocto/meta-karo-kc \
 "
