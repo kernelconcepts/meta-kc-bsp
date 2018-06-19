@@ -11,6 +11,10 @@ EXTRA_IMAGE_FEATURES ?= "debug-tweaks splash package-management hwcodecs"
 IMAGE_FSTYPES = "tar.gz"
 USER_CLASSES ?= "buildstats image-mklibs"
 PATCHRESOLVE = "noop"
+
+DL_DIR ?= "${BSPDIR}/downloads"
+SSTATE_DIR ?= "${BSPDIR}/sstate-cache"
+
 BB_DISKMON_DIRS = "\
     STOPTASKS,${TMPDIR},1G,100K \
     STOPTASKS,${DL_DIR},1G,100K \
