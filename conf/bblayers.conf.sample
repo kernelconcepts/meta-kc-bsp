@@ -15,11 +15,7 @@ BBLAYERS = " \
   ${BSPDIR}/yocto/meta-openembedded/meta-networking \
   \
   ${BSPDIR}/yocto/meta-nodejs \
-  ${BSPDIR}/yocto/meta-clang \
-  ${BSPDIR}/yocto/meta-aspnet \
   ${BSPDIR}/yocto/meta-qt5 \
   \
   ${BSPDIR}/yocto/meta-kc-bsp \
-  ${BSPDIR}/yocto/meta-freescale \
-  ${BSPDIR}/yocto/meta-karo-kc \
 "
