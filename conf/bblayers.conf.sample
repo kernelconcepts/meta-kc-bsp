@@ -17,5 +17,6 @@ BBLAYERS = " \
   ${BSPDIR}/yocto/meta-nodejs \
   ${BSPDIR}/yocto/meta-qt5 \
   \
+  ${BSPDIR}/yocto/meta-qcom-rp \
   ${BSPDIR}/yocto/meta-kc-bsp \
 "
