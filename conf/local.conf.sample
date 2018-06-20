@@ -1,7 +1,7 @@
 PREFERRED_VERSION_linux-karo = "4.9.11"
 PREFERRED_VERSION_imx-gpu-viv = "6.2.2.p0-aarch32"
 
-MACHINE = 'tx6u-8033'
+MACHINE ?= 'tx6u-8033'
 #MACHINE ?= 'tx6q-1030'
 DISTRO ?= 'poky'
 DISTRO_FEATURES_remove = "wayland systemd x11"
