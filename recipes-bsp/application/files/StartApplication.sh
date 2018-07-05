@@ -11,10 +11,11 @@ echo "Starting application..."
 
 export QT_QPA_FONTDIR=/usr/share/fonts/truetype
 export FB_MULTI_BUFFER=2
-rmmod evbug
+rmmod evbug 2>&1 > /dev/null
 
 
 # run application
-
-Qt5_CinematicExperience -platform eglfs&
+if [ -x /usr/bin/Qt5_CinematicExperience ]; then
+	Qt5_CinematicExperience -platform eglfs&
+fi
 
