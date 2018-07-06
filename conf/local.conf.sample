@@ -1,8 +1,16 @@
-PREFERRED_VERSION_linux-karo = "4.9.11"
-PREFERRED_VERSION_imx-gpu-viv = "6.2.2.p0-aarch32"
 
+# Target device selection
 MACHINE ?= 'tx6u-8033'
-#MACHINE ?= 'tx6q-1030'
+
+# Defaults to latest kernel with Vivante driver support
+PREFERRED_VERSION_linux-karo = "4.9.11"
+#PREFERRED_VERSION_imx-gpu-viv = "6.2.2.p0-aarch32"
+
+#Uncomment to swith to mainline kernels and drivers
+#MACHINEOVERRIDES .= ":use-mainline-bsp"
+
+
+# Some distribution and image settings
 DISTRO ?= 'poky'
 DISTRO_FEATURES_remove = "wayland systemd x11"
 DISTRO_FEATURES_append = "opengl"
@@ -12,26 +20,14 @@ IMAGE_FSTYPES = "tar.gz"
 USER_CLASSES ?= "buildstats image-mklibs"
 PATCHRESOLVE = "noop"
 
+# Some directory settings. Share downloads and state with other builds of
+# this BSP
 DL_DIR ?= "${BSPDIR}/downloads"
 SSTATE_DIR ?= "${BSPDIR}/sstate-cache"
 
-BB_DISKMON_DIRS = "\
-    STOPTASKS,${TMPDIR},1G,100K \
-    STOPTASKS,${DL_DIR},1G,100K \
-    STOPTASKS,${SSTATE_DIR},1G,100K \
-    STOPTASKS,/tmp,100M,100K \
-    ABORT,${TMPDIR},100M,1K \
-    ABORT,${DL_DIR},100M,1K \
-    ABORT,${SSTATE_DIR},100M,1K \
-    ABORT,/tmp,10M,1K"
-PACKAGECONFIG_append_pn-qemu-native = " sdl"
-PACKAGECONFIG_append_pn-nativesdk-qemu = " sdl"
-PACKAGECONFIG_append_pn-qtdeclarative = " qtxmlpatterns"
-PACKAGECONFIG_append_pn-qtbase = "accessibility qml-debug"
-CONF_VERSION = "1"
-
 ACCEPT_FSL_EULA = "1"
 
+# Confgure archiver class - creates a source archive
 INHERIT += "archiver"
 ARCHIVER_MODE[src] = "original"
 ARCHIVER_MODE[diff] = "1"
@@ -44,8 +40,29 @@ LICENSE_CREATE_PACKAGE = "1"
 
 BB_DANGLINGAPPENDS_WARNONLY = "1"
 
+
+# Use µCross psplash with some extensions
 SPLASH = "psplash-mucross"
 PREFERRED_PROVIDER_virtual/psplash = "psplash-mucross"
-PNBLACKLIST[fbida] = ""
 
+# Disk space housekeeping
 INHERIT += "rm_work"
+
+BB_DISKMON_DIRS = "\
+    STOPTASKS,${TMPDIR},1G,100K \
+    STOPTASKS,${DL_DIR},1G,100K \
+    STOPTASKS,${SSTATE_DIR},1G,100K \
+    STOPTASKS,/tmp,100M,100K \
+    ABORT,${TMPDIR},100M,1K \
+    ABORT,${DL_DIR},100M,1K \
+    ABORT,${SSTATE_DIR},100M,1K \
+    ABORT,/tmp,10M,1K"
+
+# Some package configuration
+
+PACKAGECONFIG_append_pn-qemu-native = " sdl"
+PACKAGECONFIG_append_pn-nativesdk-qemu = " sdl"
+PACKAGECONFIG_append_pn-qtdeclarative = " qtxmlpatterns"
+PACKAGECONFIG_append_pn-qtbase = "accessibility qml-debug"
+
+CONF_VERSION = "1"
