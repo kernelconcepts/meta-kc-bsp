@@ -19,3 +19,9 @@ if [ -x /usr/bin/Qt5_CinematicExperience ]; then
 	Qt5_CinematicExperience -platform eglfs&
 fi
 
+# or alternate application
+if [ -x /usr/bin/chromium ]; then
+	export DISPLAY=:0
+	/usr/bin/chromium --no-sandbox --disable-session-chrashed-bubble https://www.kernelconcepts.de &
+fi
+
