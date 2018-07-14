@@ -9,19 +9,18 @@ echo "Starting application..."
 
 # set up environment
 
-export QT_QPA_FONTDIR=/usr/share/fonts/truetype
+export QT_QPA_FONTDIR=/usr/share/fonts
 export FB_MULTI_BUFFER=2
-rmmod evbug 2>&1 > /dev/null
+rmmod evbug > /dev/null 2>&1
 
 
-# run application
+# run framebuffer demo application
 if [ -x /usr/bin/Qt5_CinematicExperience ]; then
-	Qt5_CinematicExperience -platform eglfs&
+	Qt5_CinematicExperience -platform eglfs > /dev/null 2>&1 &
 fi
 
-# or alternate application
+# or alternate run x11 browser application
 if [ -x /usr/bin/chromium ]; then
 	export DISPLAY=:0
-	/usr/bin/chromium --no-sandbox --disable-session-chrashed-bubble https://www.kernelconcepts.de &
+	/usr/bin/chromium --disable-gpu --no-sandbox --disable-session-chrashed-bubble https://www.kernelconcepts.de &
 fi
-
