@@ -1,2 +1,2 @@
 PACKAGECONFIG += "sql-sqlite "
-OE_QMAKE_PATH_QT_FONTS_mx6 = "${OE_QMAKE_PATH_DATA}/fonts"
+OE_QMAKE_PATH_QT_FONTS = "${datadir}/fonts"
