@@ -4,6 +4,7 @@ fakeroot do_create_kc_sdk_file() {
 	mkdir -p ${D}${SDKPATHNATIVE}/environment-setup.d
 	script=${D}${SDKPATHNATIVE}/environment-setup.d/kcbsp.sh
 
+	echo '# KC SDK settings section' > $script
 	echo 'basename -- "$0$ZSH_VERSION" | grep -q "^environment-setup$" && echo "$SHELL" | grep -q "/\(\([bd]ash\)\|\([k]sh\)\)$" && ENV=$0 POSIXLY_CORRECT=1 exec $SHELL -i' >> $script
 	echo 'basename -- "$0$ZSH_VERSION" | grep -q "^environment-setup$" && echo "Usage: . $0" && exit 1' >> $script
 	echo 'echo "Applying environment settings..."' >> $script
