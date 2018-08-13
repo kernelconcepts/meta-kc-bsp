@@ -7,7 +7,8 @@ fakeroot do_create_kc_sdk_file() {
 	echo 'basename -- "$0$ZSH_VERSION" | grep -q "^environment-setup$" && echo "$SHELL" | grep -q "/\(\([bd]ash\)\|\([k]sh\)\)$" && ENV=$0 POSIXLY_CORRECT=1 exec $SHELL -i' >> $script
 	echo 'basename -- "$0$ZSH_VERSION" | grep -q "^environment-setup$" && echo "Usage: . $0" && exit 1' >> $script
 	echo 'echo "Applying environment settings..."' >> $script
-	echo 'echo "Version ${DISTRO_VERSION}-${DISTRO_BUILD}"' >> $script
+	echo 'echo "Version:       ${DISTRO_VERSION}"' >> $script
+	echo 'echo "Target prefix: ${TARGET_PREFIX}"' >> $script
 	echo 'export PS1="[$ARCH] $PS1"' >> $script
 
 	echo 'SDK_PATH=$OECORE_NATIVE_SYSROOT/usr' >> $script
