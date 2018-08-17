@@ -15,19 +15,20 @@ if ! [ -d $DIR ]; then
 	exit 0
 fi
 
-echo "Running first boot tasks...."
-
-run-parts $DIR
-
 # check if we have a ro overlay or if we can write changes directly
-if [ -e "/media/rfs/ro" ]; then
+if [ -e "$DIR_OVERLAY_LOWER" ]; then
 # using meta-readonly-rootfs-overlay
 	mount $DIR_OVERLAY_LOWER -o remount,rw
+
+	run-parts $DIR
+
 	rm -r $DIR_OVERLAY_LOWER/$DIR
 	rm $DIR_OVERLAY_LOWER/#SYSCONFDIR#/rc*.d/S*firststart
 	rm $DIR_OVERLAY_LOWER/#SYSCONFDIR#/init.d/firststart
 	mount $DIR_OVERLAY_LOWER -o remount,ro
 else 
+	run-parts $DIR
+
 	rm -rf $DIR
 	remove_startup_link
 fi
