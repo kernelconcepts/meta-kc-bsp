@@ -1,0 +1,25 @@
+From 875cc2ec794b27bcf64fca81f4b278f269bcb540 Mon Sep 17 00:00:00 2001
+From: Florian Boor <florian@kernelconcepts.de>
+Date: Fri, 12 Oct 2018 18:10:22 +0200
+Subject: [PATCH 2/2] Fix linking
+
+---
+ makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/makefile b/makefile
+index 0af149a..d745e2d 100644
+--- a/makefile
++++ b/makefile
+@@ -1,7 +1,7 @@
+ all: overlay
+ 
+ overlay: main.o logic.o sh.o
+-	$(CC) $(LFLAGS) main.o logic.o sh.o -o overlay
++	$(CCLD) $(LDFLAGS) main.o logic.o sh.o -o overlay
+ 
+ main.o: main.c logic.h
+ 	$(CC) $(CFLAGS) -c main.c
+-- 
+2.11.0
+
