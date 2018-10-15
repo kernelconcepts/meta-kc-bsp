@@ -163,7 +163,7 @@ if [ "$build_dir_setup_enabled" = "true" ]; then
 DL_DIR ?= "\${BSPDIR}/downloads/"
 EOF
     # Change settings according environment
-    sed -e "s,MACHINE ?=.*,MACHINE ?= '$MACHINE',g" \
+    sed -e "s,^ *MACHINE ?=.*,MACHINE ?= '$MACHINE',g" \
         -e "s,DISTRO ?=.*,DISTRO ?= '$DISTRO',g" \
         -i conf/local.conf
 
