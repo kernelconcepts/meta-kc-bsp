@@ -36,5 +36,5 @@ do_install() {
                -e 's:#SBINDIR#:${sbindir}:g' \
                -e 's:#BASE_BINDIR#:${base_bindir}:g' \
                -e 's:#LOCALSTATEDIR#:${localstatedir}:g' \
-               ${D}${sbindir}/firststart.sh
+               ${D}${sbindir}/*.sh ${D}${sysconfdir}/firststart.d/*
 }
