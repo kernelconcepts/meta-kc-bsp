@@ -28,6 +28,6 @@ do_compile () {
 
 do_install() {
 	install -d ${D}${bindir}
-	install -m 644 ${B}/overlay ${D}/${bindir}/overlay
+	install -m 755 ${B}/overlay ${D}/${bindir}/overlay
 }
 
