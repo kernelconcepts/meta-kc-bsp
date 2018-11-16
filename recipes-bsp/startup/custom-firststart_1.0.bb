@@ -16,6 +16,9 @@ inherit allarch update-rc.d
 INITSCRIPT_NAME = "firststart"
 INITSCRIPT_PARAMS = "start 99 S ."
 
+FILES_${PN} = "${sbindir} ${sysconfdir}/firststart.d ${sysconfdir}/init.d/firststart"
+
+
 do_configure() {
 	:
 }
