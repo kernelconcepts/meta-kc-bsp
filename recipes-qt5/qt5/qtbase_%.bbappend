@@ -13,7 +13,7 @@ PACKAGECONFIG[gui] = "-gui,-no-gui"
 
 OE_QMAKE_PATH_QT_FONTS = "${datadir}/fonts/truetype"
 
-pkg_postinst_append_${PN} () {
+pkg_postinst_ontarget_${PN} () {
 	# make sure Qt apps find standard fonts
 	ln -sf /usr/share/fonts/truetype/ /usr/lib/fonts
 }
