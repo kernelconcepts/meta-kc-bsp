@@ -6,7 +6,7 @@ if grep -qE '\s?psplash=false\s?' /proc/cmdline; then
 fi
 
 . /etc/init.d/functions
-. /etc/default/dotplash
+. /etc/default/dotsplash
 
 export TMPDIR=/mnt/.splash
 mount tmpfs -t tmpfs $TMPDIR -o,size=40k
