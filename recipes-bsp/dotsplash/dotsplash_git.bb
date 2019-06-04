@@ -32,3 +32,5 @@ do_install_append() {
 
 INITSCRIPT_NAME = "dotsplash.sh"
 INITSCRIPT_PARAMS = "start 0 S . stop 20 0 1 6 ."
+
+RRECOMMENDS_${PN} = "${PN}-themes"
