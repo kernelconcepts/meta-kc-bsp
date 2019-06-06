@@ -1,6 +1,6 @@
 status() {
   if type splash-write >/dev/null 2>&1; then
-    (TMPDIR="/mnt/.splash" EXQUISITE_IPC="$TMPDIR/exquisite" splash-write "$1" || true) &
+    (TMPDIR="/mnt/.psplash" EXQUISITE_IPC="$TMPDIR/exquisite" splash-write "$1" || true) &
   fi
 }
 
