@@ -1,7 +1,7 @@
 SUMMARY = "./dotsplash - a tiny and customizable splash screen"
 LICENSE = "GPLv2"
 PV = "1.0+git${SRCPV}"
-SRCREV = "3b6c0abd70aadc2ceb60ec523957002de9dba5bb"
+SRCREV = "a2e7023dc7063145d568b9d0ec8c211daceb2dde"
 
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=39bba7d2cf0ba1036f2a6e2be52fe3f0"
