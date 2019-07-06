@@ -1,2 +1,2 @@
 # Parameters to pass to dotplash
-PARAMS=" -a 0 --theme mucross"
+PARAMS="@PARAMS@"

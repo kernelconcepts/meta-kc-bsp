@@ -1,7 +1,7 @@
 SUMMARY = "./dotsplash - a tiny and customizable splash screen"
 LICENSE = "GPLv2"
 PV = "1.0+git${SRCPV}"
-SRCREV = "a2e7023dc7063145d568b9d0ec8c211daceb2dde"
+SRCREV = "7179a8b40c25cfd53c5eeac462086a6386d9a1af"
 
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=39bba7d2cf0ba1036f2a6e2be52fe3f0"
@@ -13,6 +13,10 @@ SRC_URI = "git://git@gitlab.kernelconcepts.de:2224/danb/dotsplash.git;protocol=s
 
 inherit pkgconfig update-rc.d meson
 
+DOTSPLASH_THEME ?= "kc-800"
+DOTSPLASH_THEME_lamobo-r1 ?= "kc-fullhd"
+
+DOTSPLASH_PARAMS ?= "-s 15 --theme ${DOTSPLASH_THEME}"
 
 S = "${WORKDIR}/git"
 
@@ -23,6 +27,7 @@ do_install_append() {
     install -d ${D}${sysconfdir}/init.d/
     install -m 0755 ${WORKDIR}/dotsplash-init ${D}${sysconfdir}/init.d/dotsplash.sh
     install -d ${D}${sysconfdir}/default/
+    sed -i 's/@PARAMS@/${DOTSPLASH_PARAMS}/g' ${WORKDIR}/dotsplash-default
     install -m 0644 ${WORKDIR}/dotsplash-default ${D}${sysconfdir}/default/dotsplash
     install -m 0755 ${WORKDIR}/splashfuncs ${D}${sysconfdir}/default/splashfuncs
     cd ${D}/${bindir}
@@ -41,5 +46,4 @@ python populate_packages_prepend () {
                       extra_depends='', allow_dirs=True, prepend=True)
 }
 
-PACKAGES_DYNAMIC += "^dotsplash-theme-.*"
-            
+PACKAGES_DYNAMIC += "^dotsplash-theme-.*"            
