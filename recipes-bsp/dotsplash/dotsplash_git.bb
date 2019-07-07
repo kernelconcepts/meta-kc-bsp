@@ -1,7 +1,7 @@
 SUMMARY = "./dotsplash - a tiny and customizable splash screen"
 LICENSE = "GPLv2"
 PV = "1.0+git${SRCPV}"
-SRCREV = "7179a8b40c25cfd53c5eeac462086a6386d9a1af"
+SRCREV = "ff34b85bfed5401910b2bc28a150a347f26ce97f"
 
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=39bba7d2cf0ba1036f2a6e2be52fe3f0"
@@ -15,6 +15,7 @@ inherit pkgconfig update-rc.d meson
 
 DOTSPLASH_THEME ?= "kc-800"
 DOTSPLASH_THEME_lamobo-r1 ?= "kc-fullhd"
+DOTSPLASH_THEME_topasa900 ?= "kc-320"
 
 DOTSPLASH_PARAMS ?= "-s 15 --theme ${DOTSPLASH_THEME}"
 
