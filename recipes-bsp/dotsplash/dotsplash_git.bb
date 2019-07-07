@@ -13,6 +13,8 @@ SRC_URI = "git://git@gitlab.kernelconcepts.de:2224/danb/dotsplash.git;protocol=s
 
 inherit pkgconfig update-rc.d meson
 
+PACKAGE_ARCH = "${MACHINE_ARCH}"
+
 DOTSPLASH_THEME ?= "kc-800"
 DOTSPLASH_THEME_lamobo-r1 ?= "kc-fullhd"
 DOTSPLASH_THEME_topasa900 ?= "kc-320"
@@ -38,7 +40,7 @@ do_install_append() {
 INITSCRIPT_NAME = "dotsplash.sh"
 INITSCRIPT_PARAMS = "start 0 S . stop 20 0 1 6 ."
 
-RRECOMMENDS_${PN} = "${PN}-theme-mucross"
+RRECOMMENDS_${PN} = "${PN}-theme-${DOTSPLASH_THEME}"
 
 python populate_packages_prepend () {
     themedir = d.expand('${datadir}/dotsplash/themes')
