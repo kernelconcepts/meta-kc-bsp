@@ -6,7 +6,7 @@ SRCREV = "ff34b85bfed5401910b2bc28a150a347f26ce97f"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=39bba7d2cf0ba1036f2a6e2be52fe3f0"
 
-SRC_URI = "git://git@gitlab.kernelconcepts.de:2224/danb/dotsplash.git;protocol=ssh \
+SRC_URI = "git://gitlab.kernelconcepts.de/danb/dotsplash.git;protocol=https \
           file://dotsplash-default \
           file://dotsplash-init \
           file://splashfuncs"
